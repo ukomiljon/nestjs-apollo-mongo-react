@@ -6,9 +6,11 @@ node_modules/
 .pnp.js
 
 # testing
+coverage/
 /coverage
 
 # production
+build/
 /build
 
 # misc
@@ -25,6 +27,7 @@ yarn-error.log*
 ######################################
 
 # compiled output
+dist/
 /dist
 /node_modules
 
@@ -45,6 +48,7 @@ lerna-debug.log*
 
 # IDEs and editors
 /.idea
+.idea/
 .project
 .classpath
 .c9/
@@ -61,5 +65,5 @@ lerna-debug.log*
 
 !client/my-app/yarn.lock
 
-yarn.lock*
+yarn.lock
 *.lock
