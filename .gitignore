@@ -58,3 +58,8 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+!client/my-app/yarn.lock
+
+yarn.lock*
+*.lock
