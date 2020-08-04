@@ -2,40 +2,45 @@
 import * as validator from 'class-validator'
 
 export class DatasourceDto {
+
     @validator.IsString()
-    @validator.IsDefined() 
     @validator.IsNotEmpty()
+    @validator.IsDefined()
     name: string
 
     @validator.IsString()
-    @validator.IsDefined() 
     @validator.IsNotEmpty()
+    @validator.IsDefined()
     connection: string
 
-    @validator.IsNumber()
-    @validator.IsDefined() 
+    @validator.IsString()
     @validator.IsNotEmpty()
-    port: number
+    @validator.IsDefined()
+    port: string
 
     @validator.IsString()
-    @validator.IsDefined() 
     @validator.IsNotEmpty()
+    @validator.IsDefined()
     user: string
 
     @validator.IsString()
-    @validator.IsDefined()  
     @validator.IsNotEmpty()
+    @validator.IsDefined()
     password: string
 
     @validator.IsString()
-    @validator.IsDefined() 
     @validator.IsNotEmpty()
+    @validator.IsDefined()
     databaseName: string
-}
 
-export class DatasourceIdDto {
-    @validator.IsString()
-    @validator.IsDefined() 
-    @validator.IsNotEmpty()
-    id: string
+    // @validator.IsDateString()
+    // @validator.IsDate()
+    // @validator.IsNotEmpty()
+    // @validator.IsDefined()
+    // createdDate: Date
+
+    // @validator.IsDate()
+    // @validator.IsNotEmpty()
+    // @validator.IsDefined()
+    // modifiedDate: Date 
 }

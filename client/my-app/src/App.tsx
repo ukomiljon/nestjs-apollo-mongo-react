@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
+import Datasources from './components/Datasources';
 import './App.css';
+
+import { createStore } from 'redux'
+import reducer from './reducer/reducer';
+import { Provider } from 'react-redux';
+
+
+const storage = createStore(reducer)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={storage}>
+      <div className="App">
+        <Datasources />
+      </div>
+    </Provider>
   );
 }
 

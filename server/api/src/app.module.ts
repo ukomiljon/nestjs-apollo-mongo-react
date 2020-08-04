@@ -1,15 +1,18 @@
 import { Module } from '@nestjs/common';
+import { Mongoose } from 'mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DatasourcesService } from './datasources/datasources.service';
+import { ReportsModule } from './reports/reports.module';
+import { MongooseModule } from '@nestjs/mongoose'; 
 import { DatasourcesModule } from './datasources/datasources.module';
-import { Mongoose } from 'mongoose';
-import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [DatasourcesModule,
-    MongooseModule.forRoot('mongodb://localhost/reactbi')],
+  imports: [
+    ReportsModule,
+    MongooseModule.forRoot('mongodb://localhost/reactbi-db', { useNewUrlParser: true, useUnifiedTopology: true }),
+    DatasourcesModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
