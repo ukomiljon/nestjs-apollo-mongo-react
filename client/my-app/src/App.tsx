@@ -5,6 +5,7 @@ import './App.css';
 import { createStore } from 'redux'
 import reducer from './reducer/reducer';
 import { Provider } from 'react-redux';
+import Reports from './components/Reports';
 
 
 const storage = createStore(reducer)
@@ -14,6 +15,7 @@ function App() {
     <Provider store={storage}>
       <div className="App">
         <Datasources />
+        <Reports/>
       </div>
     </Provider>
   );

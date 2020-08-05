@@ -10,19 +10,9 @@ import InputForm from './templates/InputForm';
 import TableView from './templates/TableView';
 
 
-export default function Datasources() {
-
-    const [datasourceState, setDatasourceState] = useState({})
-
-    const datasources = useSelector((state: any) => state.datasources)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        fatchData('datasources').then(data => ReduxStorage(data, dispatch))
-    }, [])
-
-
-    const datasourceFields = [
+export default function Datasources() { 
+ 
+    const fieldNames = [
         "name",
         "connection",
         "port",
@@ -31,18 +21,9 @@ export default function Datasources() {
         "databaseName"
     ]
 
-
-    const addDatasource = (e: any) => {
-        postData("datasources", datasourceState)
-    }
-
-    const onChangeInput = (e: any) => {
-        setDatasourceState({ ...datasourceState, [e.target.id]: e.target.value })
-    }
-
     return (
         <div> 
-            <InputForm   />
+            <InputForm controlName={"datasources"} fieldNames = {fieldNames}  />
             <TableView  />
         </div>
     )

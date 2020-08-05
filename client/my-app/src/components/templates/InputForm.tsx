@@ -1,30 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button, Col, Form, Row } from 'react-bootstrap'
+import { postData } from '../../api/api'
 
-export default function InputForm() {
+export default function InputForm(props: any) {
+
+    const { controlName, fieldNames } = props
+
+    const [data, setData] = useState({})
+
+    const submitData = (e: any) => {
+        postData(controlName, data)
+    }
+
+    const onChangeInput = (e: any) => {
+
+        setData(
+            {
+                ...data, // const json = {name:'abc', age:12}, {...json} == {name:'abc', age:12}
+                [e.target.id]: e.target.value // {...json, age:20} == {name:'abc', age:20}
+            })
+
+        // console.log(data)
+    }
+
+
+
+
     return (
         <div>
-            
+
             <Form>
 
-                {datasourceFields.map((field: any) => {
+                {
 
-                    let inputType = "text"
-                    if (field == "Password") inputType = "password"
+                    fieldNames.map((fieldName: any) => {
 
-                    return <Form.Group as={Row}  >
-                        <Form.Label column sm="2">
-                            {field}:
+                        let inputType = "text"
+                        if (fieldName == "password") inputType = "password"
+
+                        return <Form.Group as={Row}  >
+                            <Form.Label column sm="2">
+                                {fieldName}:
                         </Form.Label>
-                        <Col sm="10">
-                            <Form.Control type={inputType} placeholder={"Enter " + field} onChange={onChangeInput} id={field} />
-                        </Col>
-                    </Form.Group>
-                })
+                            <Col sm="10">
+                                <Form.Control type={inputType} placeholder={"Enter " + fieldName} onChange={onChangeInput} id={fieldName} />
+                            </Col>
+                        </Form.Group>
+                    })
+
                 }
 
-                <Button variant="primary" type="submit" onClick={addDatasource}>
-                    Submit
-             </Button>
+                <Button variant="primary" type="submit" onClick={submitData}> Submit  </Button>
             </Form>
         </div>
     )
